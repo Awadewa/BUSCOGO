@@ -1,5 +1,16 @@
-# Hello
+# Using BUSCOGO To Determine the Enriched GO Term of "Missing" BUSCO Genes
+
+## 1. Input Data
+
+In this example we will be working with the BUSCO Table of a mite genome processed through BUSCO using the Arachnid lineage. The BUSCO Table used as input for this example can be found above. 
+
+User can upload the BUSCO table into BUSCOGO through the "Upload File" button on the top left of the screen.
+
 ![image](https://user-images.githubusercontent.com/52098813/182611518-29c16dfd-003b-4e38-b81a-85a932bdf07c.png)
+
+## 2. Selecting our "Gene Of Interest"
+
+Once a BUSCO Table is uploaded, user can view the corresponding content of the table 
 
 ![image](https://user-images.githubusercontent.com/52098813/182611631-d9408a79-51eb-405e-94ec-cdc530a34fda.png)
 
