@@ -11,15 +11,6 @@ However, sometimes BUSCO genes do not behave as expected - they are either Dupli
 The purpose of this tool is to explore such special cases where the deviations are non-random. BUSCOGO achieves this through the use of Gene Ontology and an Enrichment Analysis Test to calculate stastically signfiicant enriched gene ontology terms of BUSCO genes of interest. 
 
 
-# The Concept of a "Benchmarking Universal Single Copy Ortholog (BUSCO)"
-
-The BUSCO sets are collections of nearly universally distributed (90%) single-copy orthologous genes found within species at a specific phylogenetic level. Originally these sets represented arthropods, vertebrates, metazoans, fungi, and eukaryotes, but additional genome sequences have made it possible to create BUSCO sets at a finer scale.
-
-These sets are determined by analysis of species in the OrthoDB database. The theory is that genes belonging to these sets are evolving under “single-copy control” where something about their necessity and dosage constraints maintains them at a single copy within the genome.
-
-If a newly assembled genome or transcriptome is missing genes from the corresponding BUSCO set, something may have gone wrong with sequencing/assembly/annotation/etc, and other genes may also be missing.
-
-
 # The Four BUSCO Status
 
 BUSCO attempts to provide a quantitative assessment of the completeness in terms of expected gene content of a genome assembly, transcriptome, or annotated gene set. The results are simplified into categories of Complete and single-copy, Complete and duplicated, Fragmented, or Missing BUSCOs.
