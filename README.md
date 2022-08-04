@@ -35,7 +35,10 @@ If found to be missing, there were either no significant matches at all, or the 
 
 # What is in this User Guide
 
+Vignette
 
+[here] 
+(https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%201:%20Missing%20BUSCO%20Analysis/Vignette_One.md)
 # Accessing BUSCOGO
 
 # What You Need To Get Started
