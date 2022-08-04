@@ -28,7 +28,7 @@ BUSCO attempts to provide a quantitative assessment of the completeness in terms
 
 If found to be complete, the BUSCO matches have scored within the expected range of scores, matches a single-copy, and within the expected range of length alignments to the BUSCO profile.
 
-### Complete
+### Duplicated
 
 If found to be duplicated, the BUSCO matches have scored within the expected range of scores, matches a multiple copies, and within the expected range of length alignments to the BUSCO profile.
 
