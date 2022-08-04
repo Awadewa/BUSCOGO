@@ -35,10 +35,25 @@ If found to be missing, there were either no significant matches at all, or the 
 
 # What is in this User Guide
 
-Vignette
+### How To Access BUSCOGO
 
-[here] 
-(https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%201:%20Missing%20BUSCO%20Analysis/Vignette_One.md)
+### BUSCOGO Shiny App: Usage and Features
+
+### BUSCOGO Command Line Tool: Usage and Features
+
+### BUSCOGO Result Interpretation
+
+### Vignette: A Scenario Based Tutorial
+
+Vignette 1: Missing BUSCO Analysis
+https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%201:%20Missing%20BUSCO%20Analysis/Vignette_One.md
+
+Vignette 2: Duplicated BUSCO in multiple species Analysis
+https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%202:%20Duplicated%20BUSCO%20in%20multiple%20species%20Analysis/Vignette_Two.md
+
+Vignette 3: BUSCO genes of a specific sequence or location Analysis
+https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%203:%20BUSCO%20genes%20of%20a%20specific%20sequence%20or%20location%20Analysis/Vignette_Three.md
+
 # Accessing BUSCOGO
 
 # What You Need To Get Started
