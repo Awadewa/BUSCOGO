@@ -46,47 +46,116 @@ If found to be missing, there were either no significant matches at all, or the 
 ### Vignette: A Scenario Based Tutorial
 
 Vignette 1: Missing BUSCO Analysis
+
 https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%201:%20Missing%20BUSCO%20Analysis/Vignette_One.md
 
 Vignette 2: Duplicated BUSCO in multiple species Analysis
+
 https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%202:%20Duplicated%20BUSCO%20in%20multiple%20species%20Analysis/Vignette_Two.md
 
 Vignette 3: BUSCO genes of a specific sequence or location Analysis
+
 https://github.com/Awadewa/BUSCOGO/blob/main/Vignette%203:%20BUSCO%20genes%20of%20a%20specific%20sequence%20or%20location%20Analysis/Vignette_Three.md
 
 # Accessing BUSCOGO
 
+BUSCOGO can be access using two diffenret user interface: a Shiny Web App or a Command Line Tool
+
+
+
+### BUSCOGO Shiny Web App
+
+BUSCOGO can be access through a Shiny Web interface through the following link:
+Link: Insert link when delployed
+
+
+
+### BUSCOGO Command Line Tool
+
+BUSCOGO can also be accessed through the use of an R-studio Terminal (Or regular terminal, if Rtusdio directory is configured)
+
+User can download the BUSCOGO R script:
+
+Once open on R-Studio, user can use BUSCOGO through the R terminal:
+```
+Rscript BUSCOGO.R --input input_file_name [options]
+```
+
+An indepth guide of the BUSCOGO Command Line tool is given below.
+  
 # What You Need To Get Started
+
+BUSCOGO takes in an input in the format of a BUSCO Full Table.
+
+BUSCO Full Table is the result output of the BUSCO Quality Control tool.
+
+Workflow:
+``` 
+Nucleotide Fasta File    >>>   BUSCO QC Tool  >>>   BUSCO_Full_Table   >>>   BUSCOGO
+``` 
+
+BUSCO Full Table:
 ![image](https://user-images.githubusercontent.com/52098813/182605083-6d6e3a5c-eb9f-47a8-8213-310d9dfefefd.png)
 
-# Shiny Web-App
-# Features 
+# BUSCOGO Shiny Web-App: Features and Usage
 
 ## Upload FIle
+User can upload  one or multiple BUSCO Full Table file using the "Browse File" button on the top left side of the screen. 
+
 ![image](https://user-images.githubusercontent.com/52098813/182605660-030dba18-3c8f-42ca-9c40-8e90e738b0dc.png)
 
 
-
 ## BUSCO Gene of Interest Table
+
+Once Uploaded, all content from the input BUSCO Table will be displayed in the Gene of Interest Table. All Genes within the gene of interest table will be the list of genes being compared to the background during enrichment analysis tests.
+
 ![image](https://user-images.githubusercontent.com/52098813/182605422-aa27eb3a-f5a8-47f8-b761-b72f2bec6447.png)
 
 
 
 ## BUSCO Input Statistics 
 
+In additation to the Gene Of interest Table, BUSCOGO will provide user with a statistcal output of the Gene of Interest that shows the number of Missing, Complete, Fragmented, Duplicated and Total genes of the input BUSCO Table.
+
 ![image](https://user-images.githubusercontent.com/52098813/182605459-031c1d47-cb46-40de-8ae1-60627f7336cc.png)
 
 ## BUSCO Gene of Interest Filter
+
+User can select their desired subset of Gene list of interest through the use of the Gene of Interest Filter.
+
 ![image](https://user-images.githubusercontent.com/52098813/182605521-49aa4b83-9707-4fec-a739-2d14da8d6eaa.png)
 
+### BUSCO Status Filter
+
+Selects Genes of the respective status; Missing, Complete, Fragmented and Duplicated. Multiple status can be selected at once in combination.
+
+### BUSCO Genome Range
+
+When a input BUSCO Table is uploaded, BUSCOGO automatically updates the available genome range (coordiantes) of the input file for the user to select.
+
+### BUSCO Specific Sequence/Scaffold
+
+When a input BUSCO Table is uploaded, BUSCOGO automatically updates the available sequence/scaffold of the input file for the user to select.
+
+
+### BUSCO Specific Strand
+
+Allows user to only select BUSCO genes on the Sense (+) or Antisense (=) Strand
+
+
+
 ## BUSCO Custom Background
+
+By default, all genes in the input BUSCO table is used as the Background Gene Universe within the Enrichment Analysis Test
+
+However, BUSCOGO allows user to select the custom background option to specify custom set of genes to be included in the Background.
+The selection process of the custom background follows the same method of selection of gene list of interest.
+
 ![image](https://user-images.githubusercontent.com/52098813/182605783-6df48bae-00a2-499f-ab4c-51bd6739c306.png)
 
 
-### Start Analysis
+### Once you are happy with the "Gene List of Interest" and/or "Background Genes" press the start analysis Button.
 
-
-Explanation of result is given here: link
 
 
 
@@ -102,6 +171,33 @@ Rscript BUSCOGO.R --help
 ```
 Rscript BUSCOGO.R --input busco_table_file --missing --duplicated
 ```
+
+# BUSCOGO Enrichment Analysis
+
+BUSCOGO utilizes the enrichment analysis package topGO, the details of which are published by Alexa et al (2006). topGO requires a set of genes of interest, a set of background or population genes that contain the gene set of interest (for example all BUSCO genes for the relevant taxonomic clade) and the gene ontology annotations for the background set of genes. BUSCOGO generates these gene sets based on the input provided by the user, and uses the gene ontology annotations provided by the OrthoDB (Zdobnov et al 2021) to build the background annotation. topGO then performs statistical analysis to determine if genes of interest are more often associated with certain biological functions than what would be expected in the background set of genes. You can use these results to determine if a set of BUSCO genes of interest is 'enriched’ for certain biological functions. 
+
+### The Different Algorithms of topGO
+
+The results of GO enrichment analysis are dependent on the treatment of the GO hierarchy. topGO provides several different algorithms that treat this hierarchy differently. BUSCOGO generates results using these different algorithms and they include;
+
+### Classic: 
+Classic does not take into account the hierarchy of GO, and tests each term independent of one another. 
+
+### Weight: 
+Weight algorithm compares the significance of the child and parent nodes in the GO hierarchy and includes the more significant. 
+
+### Elim: 
+Elim algorithm begins at the bottom (or least general) GO term, and if the term is significant below a certain cutoff, will discard all genes annotated with more general terms.  
+
+### Weight01: 
+A mixture between the Weight and Elim algorithms. 
+
+### Parent Child: 
+The parent child algorithm utilizes the parent terms of the GO terms.  
+
+topGO also offers several different statistical tests to generate enrichment analysis results, and BUSCOGO uses the Fisher statistic. More information can be found in the topGO publication by Alexa et al (2006). The hierarchy itself is provided for enrichment analysis by topGO, which uses the GO.db package. 
+
+
 
 # Result Interpretation 
 
