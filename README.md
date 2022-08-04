@@ -3,14 +3,43 @@
 
 # BUSCOGO: A BUSCO Specific GO Term Enrichment Analysis Tool
 
+BUSCO (https://busco.ezlab.org/) is a widely used tool in genomics. BUSCO is built around searching for “universal single-copy orthologues” in a genome, transcriptome or proteome. These are genes that should be present in >90% species (“universal”) in the relevant taxonomic group and present only once in >90% species (“single copy”). This allows the user to identify the same gene (“orthologues”) in multiple genomes, which can then be used for downstream analysis, such as phylogenomics. The total recall of BUSCO genes can also be used to assess genome assembly completeness. (The “B” is for “benchmarking”.)
 
-The purpose of this tool is to identify. Something about this 
+However, sometimes BUSCO genes do not behave as expected - they are either Duplicated or Missing from otherwise high-quality genomes. It can be biologically useful to know whether such deviations appear to be non-random.
+
+
+The purpose of this tool is to explore such special cases where the deviations are non-random. BUSCOGO achieves this through the use of Gene Ontology and an Enrichment Analysis Test to calculate stastically signfiicant enriched gene ontology terms of BUSCO genes of interest. 
 
 
 # The Concept of a "Benchmarking Universal Single Copy Ortholog (BUSCO)"
 
+The BUSCO sets are collections of nearly universally distributed (90%) single-copy orthologous genes found within species at a specific phylogenetic level. Originally these sets represented arthropods, vertebrates, metazoans, fungi, and eukaryotes, but additional genome sequences have made it possible to create BUSCO sets at a finer scale.
 
-# Motivation behind BUSCOGO
+These sets are determined by analysis of species in the OrthoDB database. The theory is that genes belonging to these sets are evolving under “single-copy control” where something about their necessity and dosage constraints maintains them at a single copy within the genome.
+
+If a newly assembled genome or transcriptome is missing genes from the corresponding BUSCO set, something may have gone wrong with sequencing/assembly/annotation/etc, and other genes may also be missing.
+
+
+# The Four BUSCO Status
+
+BUSCO attempts to provide a quantitative assessment of the completeness in terms of expected gene content of a genome assembly, transcriptome, or annotated gene set. The results are simplified into categories of Complete and single-copy, Complete and duplicated, Fragmented, or Missing BUSCOs.
+
+### Complete
+
+If found to be complete, the BUSCO matches have scored within the expected range of scores, matches a single-copy, and within the expected range of length alignments to the BUSCO profile.
+
+### Complete
+
+If found to be duplicated, the BUSCO matches have scored within the expected range of scores, matches a multiple copies, and within the expected range of length alignments to the BUSCO profile.
+
+### Fragmented
+
+If found to be fragmented, the BUSCO matches have scored within the range of scores but not within the range of length alignments to the BUSCO profile.
+
+### Missing
+
+If found to be missing, there were either no significant matches at all, or the BUSCO matches scored below the range of scores for the BUSCO profile.
+
 
 
 # What is in this User Guide
